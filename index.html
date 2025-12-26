@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❗ Dhruv's Portfolio ❗</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root{
+            /* Theme Colors */
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            /* Maroon Variations */
+            --maroon-main: #800000;
+            --maroon-bright: #a51b2b;
+            --maroon-glow: #d42a3e;
+            --maroon-f:#660909;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--maroon-main);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--maroon-bright);
+        }
+
+        /* Typography & Utilities */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+        }
+
+        .text-maroon {
+            color: var(--maroon-glow);
+        }
+
+
+
+        .bg-maroon {
+            background-color: var(--maroon-main);
+        }
+
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 4px;
+            background-color: var(--maroon-bright);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(128, 0, 0, 0.3);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--text-main) !important;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--maroon-glow) !important;
+        }
+
+        /* Hero Section */
+        #home {
+            min-height: 110vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(18,18,18,1) 0%, rgba(30,0,0,1) 100%);
+        }
+
+        .hero-img-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin:0 auto;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--maroon-bright);
+            box-shadow: 0 0 20px rgba(165, 27, 43, 0.4);
+        }
+
+        .btn-custom {
+            background-color: var(--maroon-main);
+            color: white;
+            border: 2px solid var(--maroon-main);
+            padding: 10px 30px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: transparent;
+            color: var(--maroon-glow);
+            border-color: var(--maroon-glow);
+            box-shadow: 0 0 15px rgba(165, 27, 43, 0.3);
+        }
+
+        .btn-outline-custom {
+            background-color: transparent;
+            color:darkred;
+            border: 2px solid darkred;
+            padding: 10px 30px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-custom:hover {
+            background-color: darkred;
+            color: var(white    );
+        }
+
+        /* Cards General */
+        .custom-card {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+
+        .custom-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-color: var(--maroon-main);
+        }
+
+        /* Skills */
+        .progress {
+            height: 10px;
+            background-color: #333;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--maroon-main), var(--maroon-glow));
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--maroon-bright);
+            margin-bottom: 15px;
+        }
+
+        /* Project Section*/
+        .project-card {
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgb(20, 19, 20, 0.9), rgb(112, 11, 11, 0.9));
+            opacity: 0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .card-dark {
+            background-color: var(--primary-dark);
+            border: 2px solid #470b10;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-dark:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Education Timeline */
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 40px;
+            border-left: 2px solid var(--maroon-main);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: var(--maroon-bright);
+            border: 3px solid var(--bg-dark);
+        }
+
+        .year-badge {
+            background-color: rgba(128, 0, 0, 0.2);
+            color: var(--maroon-glow);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid #222;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 45px;
+            height: 45px;
+            background-color: var(--bg-card);
+            color: white;
+            border-radius: 50%;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background-color: var(--maroon-main);
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="100">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span class="text-maroon"></span>Dhruv <span class="text-maroon">Khorwal</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link 
+                      active " href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link js-scroll-trigger" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link js-scroll-trigger" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link js-scroll-trigger" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link js-scroll-trigger" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home / Hero Section -->
+    <section id="home">
+        <div class="container">
+            <div class="row align-items-center flex-column-reverse flex-lg-row">
+                <div class="col-lg-6 mt-4 mt-lg-0 text-center text-lg-start">
+                    <h4 class="text-maroon mb-2">Hi</h4>
+                    <h1 class="display-3 fw-bold mb-3">I'm Dhruv <span class="text-maroon">Khorwal</span></h1>
+                    <h3 class="mb-4 ">BCA 1st Year Student | Tech Enthusiast</h3>
+                    <p class="lead mb-4 text-secondary">
+                        Welcome to my digital space. I'm starting my journey into the world of computer applications, learning C programming, and exploring web development.
+                    </p>
+                    <div class="d-flex justify-content-center justify-content-lg-start gap-3">
+                        <a href="#about" class="btn btn-custom">More About Me</a>
+                        <a href="#education" class="btn btn-outline-custom">My Journey</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <div class="hero-img-container">
+                        <!-- Placeholder for User Image -->
+                        <img src="dk8.jpg" alt="Profile" class="hero-img img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">About Me</h2>
+            </div>
+            <div class="row mt-4">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <div class="custom-card text-center d-flex flex-column justify-content-center">
+                        <i class="fas fa-user-graduate fa-4x text-maroon mb-3"></i>
+                        <h4>Education Oriented</h4>
+                        <p class="">Currently focusing on building strong fundamentals in Computer Science.</p>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="custom-card">
+                        <h3>Passionate about <span class="text-maroon">Technology</span></h3>
+                        <p class="mt-3 ">
+                            I am a first-year student pursuing a Bachelor of Computer Applications (BCA). My goal is to become a full-stack developer. I love solving logical problems and creating clean, efficient code.
+                        </p>
+                        <p class="">
+                            Although I am just starting, I am a quick learner and eager to collaborate on small projects to enhance my skills.
+                        </p>
+                        <div class="row mt-4">
+                            <div class="col-sm-6 mb-3">
+                                <h6 class="fw-bold"><i class="fas fa-calendar-alt text-maroon me-2"></i> Age:</h6>
+                                <span class="">19 Years</span>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <h6 class="fw-bold"><i class="fas fa-map-marker-alt text-maroon me-2"></i> Location:</h6>
+                                <span class="">India</span>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <h6 class="fw-bold"><i class="fas fa-envelope text-maroon me-2"></i> Email:</h6>
+                                <span class="">dhruvkhorwal51@gmail.com</span>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <h6 class="fw-bold"><i class="fas fa-language text-maroon me-2"></i> Languages:</h6>
+                                <span class="">English, Hindi</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="bg-darker" style="background-color: #0f0f0f;">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">My Skills</h2>
+                <h3 class="text-maroon mb-5">What I've learned in my 1st Semester</h3>
+            </div>
+            
+            <div class="row">
+                <!-- Coding Skills -->
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h4 class="mb-4">Programming & Tools</h4>
+                    
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span>HTML & CSS</span>
+                            <span></span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 80%"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span>Bootstrap</span>
+                            <span></span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 75%"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span>C Programming</span>
+                            <span></span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 76%"></div>
+                        </div>
+                    </div>
+
+                     <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span>MS Office</span>
+                            <span></span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Soft Skills Cards -->
+                <div class="col-lg-6">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="custom-card text-center p-3">
+                                <i class="fas fa-brain skill-icon"></i>
+                                <h5>Logic Building</h5>
+                                <p class="small mb-0">Solving patterns & algorithms</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="custom-card text-center p-3">
+                                <i class="fas fa-users skill-icon"></i>
+                                <h5>Teamwork</h5>
+                                <p class="small mb-0">Collaborative projects</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="custom-card text-center p-3">
+                                <i class="fas fa-calculator skill-icon"></i>
+                                <h5>Mathematics</h5>
+                                <p class="small mb-0">Discrete Math & Stats</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="custom-card text-center p-3">
+                                <i class="fas fa-comment-dots skill-icon"></i>
+                                <h5>Communication</h5>
+                                <p class="small mb-0">Presentations & Seminars</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Education</h2>
+            </div>
+            
+            <div class="row justify-content-center mt-4">
+                <div class="col-lg-8">
+                    
+                    <!-- Item 1 -->
+                    <div class="timeline-item">
+                        <span class="year-badge">2025 - Present</span>
+                        <h4 class="mt-2">Bachelor of Computer Applications (BCA)</h4>
+                        <h6 class="text-maroon">Starinfotech College</h6>
+                        <p class=" mt-2">
+                            Currently in 1st Year. Studying core subjects like Programming in C, Computer Fundamentals, Mathematics, and Communication Skills.
+                        </p>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="timeline-item">
+                        <span class="year-badge">2024-2025</span>
+                        <h4 class="mt-2">Higher Secondary (12th Grade)</h4>
+                        <h6 class="text-maroon">Samrat Public School</h6>
+                        <p class=" mt-2">
+                            Completed 12th grade with focus on Science.
+                        </p>
+                    </div>  
+
+                    <!-- Item 3 -->
+                    <div class="timeline-item" >
+                        <span class="year-badge">2022-2023</span>
+                        <h4 class="mt-2">Secondary School (10th Grade)</h4>
+                        <h6 class="text-maroon">St.Francis sr.sec.school</h6>
+                        <p class=" mt-2">
+                            Successfully completed matriculation with distinction.
+                        </p>
+                    </div>
+                    <div class="text-center">
+                        
+                        <div class="container-fluid mt-3">
+                        <button class="btn btn-custom me-2" data-bs-toggle="modal" data-bs-target="#login"><a href="DHRUV KHORWAL_Resume.pdf" class="text-white" style="text-decoration:none; ">View Resume</a>   </button>
+                            <!-- <div class="modal fade" id="login" data-bs-backdrop="static" data-bs-keyboard="false">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-dark"
+                                        >
+                                            <h1>RESUME</h1>
+                                        </div>
+                                        <div class="modal-body bg-maroon">
+                                            
+                                        </div>
+                                        <div class="modal-footer bg-dark">
+                                            <button class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div> -->
+                    </div>
+                    </div>
+                    
+
+                </div>
+            </div>
+        </div>
+    </section> 
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-5 bg-darker" style="background-color: #0f0f0f;">
+        <div class="container py-5 text-center">
+            <h2 class="section-title">Featured Project</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-6">
+                    <div class="card card-dark project-card">
+                        <div class="position-relative">
+                            <img src="kd.png" class="card-img-top img-fluid" alt="E-commerce Platform">
+                            <div class="project-overlay">
+                                <div class="text-center">
+                                    <a href="https://dhruvk51.github.io/dk/" class="btn btn-custom me-2">View Demo</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold text-white">E-commerce Platform</h5>
+                            <p class="card-text text-gray text-white">Full-stack e-commerce created with HTML/CSS Bootsrap </p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge bg-danger">HTML</span>
+                                <span class="badge bg-danger">CSS</span>
+                                <span class="badge bg-danger">BOOTSTRAP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+                <div class="col-md-6 col-lg-6">
+                    <div class="card card-dark project-card">
+                        <div class="position-relative">
+                            <img src="t.png" class="card-img-top img-fluid" alt="Task Management App">
+                            <div class="project-overlay">
+                                <div class="text-center">
+                                    <a href="https://dhruvk51.github.io/travels/" class="btn btn-custom me-2">View Demo</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold text-white">Tour And Travels</h5>
+                            <p class="card-text text-gray text-white">Productivity application with real-time collaboration features.</p>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge bg-danger">HTML</span>
+                                <span class="badge bg-danger">CSS</span>
+                                <span class="badge bg-danger">BOOTSTRAP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!--Contact section-->  
+    <section id="contact" class="py-5 position-relative text-white" style="background-color: var(--maroon-f);">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb">
+                    <h2 class="fw-bold mb-4">Let's Connect!</h2>
+                    <p class="mb-4 text-white-50">
+                        I'm always open to discussing new projects, learning opportunities, or just having a chat about technology.
+                    </p>
+                    <div class="mb-3">
+                        <i class="fas fa-envelope me-3"></i>dhruvkhorwal51@gmail.com
+                    </div>
+                    <div class="mb-3">
+                        <i class="fas fa-phone me-3"></i> +91 9887906717
+                    </div>
+                    <div class="mb-3">
+                        <i class="fas fa-map-marker-alt me-3"></i> Ajmer, Rajasthan, India
+                    </div>
+                    
+                    
+                </div>
+                <div class="col-lg-6">
+                    <div class="card p-4 text-dark shadow-lg border-0" style="background-color: var(--bg-dark)">
+                        <form onsubmit="">
+                            <div class="mb-3">
+                                <label class="form-label text-white">Name</label>
+                                <input type="text" class="form-control" placeholder="" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-white">Email Address</label>
+                                <input type="email" class="form-control" placeholder="" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-white">Message</label>
+                                <textarea class="form-control" rows="4" placeholder="Hello..." style="resize:none;" ; required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-custom w-100 text-white">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links mb-4">
+                <a href="https://www.github.com"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:dhruvkhorwal51@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p class="small mb-0">&copy; 2025 Dhruv Khorwal. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script type="text/javascript">
+        $('.js-scroll-trigger').click(function () {
+            $('.navbar-collapse').collapse('hide');
+        });
+    </script>
+
+    
+</body>
+</html> 
